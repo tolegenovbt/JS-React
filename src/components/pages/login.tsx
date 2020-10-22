@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useEffect, useRef, useState } from 'react'
 import { Link, Redirect } from 'react-router-dom';
 import { User } from '../../modules/user';
 import './login.css';
@@ -7,14 +7,24 @@ import './login.css';
 interface Props{
     initUser: User[];
     onUserChange: (newUser: User) => void;
+    onLoggedIn: (isLoggedIn: boolean) => void;
 }
 
 
 export default function Login(props: Props): ReactElement{
 
+    const emailRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        emailRef.current?.focus()
+    }, [])
+
     // const handleIs = (newIs: string) => {
     //     props.onIsChange(newIs);
     // }
+    const onLoggedIn= (isLoggedIn: boolean) => {
+        props.onLoggedIn(true);
+    }
 
     const handleUserChange = (newUser: User) => {
         props.onUserChange(newUser);
@@ -56,7 +66,10 @@ export default function Login(props: Props): ReactElement{
             if(oldUser['email'] == newUser['email'] && oldUser['password'] == newUser['password']){
                 console.log('I found');
                 handleUserChange(oldUser);
-                // handleIs('welcome');
+                onLoggedIn(true);
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('password', password);
+                sessionStorage.setItem("isLoggedIn", 'true');
             }
             else{
                 alert("User not found");
@@ -78,16 +91,18 @@ export default function Login(props: Props): ReactElement{
                         <form>
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="text" placeholder='Email' className= 'form-control' onChange={e => setEmail(e.target.value)}/>
+                                <input type="text" placeholder='Email' className= 'form-control' onChange={e => setEmail(e.target.value)} ref={emailRef}/>
                             </div>
                             <div className="form-group">
                                 <label>Password</label>
                                 <input type="text" placeholder='Password' className= 'form-control' onChange={e => setPassword(e.target.value)}/>
                             </div>
-                            <Link to={'/welcome'}><button className="btn btn-black" onClick={onSubmit}>Login</button></Link>
+                            <Link to={'/'}><button className="btn btn-black" onClick={onSubmit}>Login</button></Link>
                             <Link to={'/'}><button className="btn btn-secondary" >Cancel</button></Link>
                             <br/>
+                            <br/>
                             <h5>Don't have an account?</h5>
+                            <br/>
                             <Link to={'/sign-up'}><div>
                                 <button className="btn btn-black">Sign Up</button>
                                 </div></Link>

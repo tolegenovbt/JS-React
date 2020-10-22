@@ -6,7 +6,6 @@ interface Props {
     
 }
 
-
 export default function Cards({}: Props): ReactElement {
     return (
         <div className='cards'>
@@ -16,15 +15,15 @@ export default function Cards({}: Props): ReactElement {
                     <ul className="cards__items">
                         <CardItem 
                         src='images/img-9.jpg'
-                        text='Waterfall sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
+                        text='Travel'
                         label='Adventure'
-                        path='services'
+                        path='people/1'
                         />
                         <CardItem 
                         src='images/img-2.jpg'
-                        text='Bali sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
+                        text=''
                         label='Adventure'
-                        path='services'
+                        path='2'
                         />
                     </ul>
                     <ul className="cards__items">
@@ -32,19 +31,19 @@ export default function Cards({}: Props): ReactElement {
                         src='images/img-6.jpg'
                         text='Waterfall sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
                         label='Adventure'
-                        path='services'
+                        path='3'
                         />
                         <CardItem 
                         src='images/img-3.jpg'
                         text='Bali sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
                         label='Adventure'
-                        path='services'
+                        path='4'
                         />
                         <CardItem 
                         src='images/img-4.jpg'
                         text='Bali sd,cbsdj csd ckjsdkc c skdbjckjdsncj sdjcsdkjb'
                         label='Adventure'
-                        path='services'
+                        path='5'
                         />
                     </ul>
                 </div>

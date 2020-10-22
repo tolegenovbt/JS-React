@@ -1,14 +1,31 @@
-import React, { ReactElement, useState, useEffect } from 'react';
+import React, { ReactElement, useState, useEffect, Component } from 'react';
 import { Link } from 'react-router-dom';
 import './nav-bar.css';
 import '../app/App.css'
+import { User } from '../../modules/user';
+import { on } from 'process';
+import { ReactComponent } from '*.svg';
+import { render } from '@testing-library/react';
 
-function Navbar(): ReactElement {
+interface Props{
+  isLoggedIn: boolean;
+  initUser: User;
+  onLoggedOut: any;
+}
+
+function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
     const [click, setClick] = useState(false);
     const [button, setButton] = useState(true);
   
     const handleClick = () => setClick(!click);
-    const closeMobileMenu = () => setClick(false);
+    const handleLogOut = () => { 
+      onLoggedOut = false;
+      sessionStorage.removeItem('isLoggedIn')
+      sessionStorage.removeItem('username')
+      console.log('logout')
+      window.location.reload();
+    }
+      const closeMobileMenu = () => setClick(false);
   
     const showButton = () => {
       if (window.innerWidth <= 960) {
@@ -29,7 +46,7 @@ function Navbar(): ReactElement {
         <nav className='navbar'>
           <div className='navbar-container'>
             <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-              TRVL
+              WC
               <i className='fab fa-typo3' />
             </Link>
             <div className='menu-icon' onClick={handleClick}>
@@ -43,23 +60,36 @@ function Navbar(): ReactElement {
               </li>
               <li className='nav-item'>
                 <Link
-                  to='/services'
+                  to='/categories'
                   className='nav-links'
                   onClick={closeMobileMenu}
                 >
-                  Services
+                  Categories
                 </Link>
               </li>
               <li className='nav-item'>
                 <Link
-                  to='/services'
+                  to='/products'
                   className='nav-links'
                   onClick={closeMobileMenu}
                 >
                   Products
                 </Link>
               </li>
-              <li className='nav-item'>
+              {sessionStorage.getItem('isLoggedIn') === 'true' ? (
+                  <li className='nav-item log1'>
+                  <Link
+                      to='/'
+                      className='nav-links'
+                      onClick={handleLogOut}
+                    >
+                          <i className="fas fa-user log1"></i>
+                          <br/>
+                          <h5 className="name log1">{sessionStorage.getItem('username')}</h5> 
+                          <h5 className="name log2">Log Out</h5>
+                    </Link>
+                  </li>
+              ): (<li className='nav-item'>
               <Link
                   to='/login'
                   className='nav-links'
@@ -67,7 +97,7 @@ function Navbar(): ReactElement {
                 >
                   Log in
                 </Link>
-              </li>
+              </li>)}
             </ul>
             {/* {button && <Button buttonStyle='btn--outline' buttonSize=' '>Log in</Button>} */}
             {/* {button && <Button buttonStyle='btn--outline' buttonSize=' '>SIGN UP</Button>} */}

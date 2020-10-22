@@ -31,6 +31,7 @@
   
   .navbar-logo:hover {
     text-decoration: none;
+    color: #fff !important;
     transition: all 0.2s ease-out;
   }
   
@@ -65,7 +66,9 @@
   
 .nav-links:hover {
     text-decoration: none;
+    color: #fff !important;
     border-bottom: 2px solid #fff;
+    outline: none;
     transition: all 0.2s ease-out;
   }
   
@@ -199,4 +202,20 @@
     background: #ffffff;
     color: #242424;
     transition: all 0.3s ease-out;
+}
+
+.name{
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+li .log2{
+  display: none;
+}
+
+li:hover .log1{
+  display: none;
+}
+li:hover .log2{
+  display: inline;
 }
