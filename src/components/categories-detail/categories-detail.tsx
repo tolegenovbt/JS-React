@@ -1,14 +1,11 @@
-import React, { ReactElement } from 'react'
-import { Link, useRouteMatch } from 'react-router-dom'
+import React, { ReactElement } from 'react';
+import { useRouteMatch } from 'react-router-dom';
 import { products } from '../../mock/products-mock';
 import CategoriesDetailItem from './categories-detail-item';
-import './categories-detail.css'
+import './categories-detail.css';
 
-interface Props {
 
-}
-
-export default function CategoriesDetail({}: Props): ReactElement {
+export default function CategoriesDetail(): ReactElement {
 
     const match = useRouteMatch<{category_id: string}>();
 

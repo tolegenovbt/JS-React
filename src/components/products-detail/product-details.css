@@ -26,7 +26,30 @@
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-.box p{
+p{
     line-height: 1.5;
-    margin: 15px 0;
+    margin-left: 12px;
+}
+
+h3{
+    line-height: 1.5;
+    margin-left: 12px;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.download{
+    width: auto;
+    text-decoration: none;
+}
+
+.rate{
+    margin-left: 10px;
+}
+
+.rating{
+    margin-left: 15px;
+    margin-right: 15px;
 }

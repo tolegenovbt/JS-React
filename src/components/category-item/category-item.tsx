@@ -12,7 +12,6 @@ interface Props {
 
 export default function CategoryItem({src, text, label, category_id}: Props): ReactElement {
 
-    const match = useRouteMatch();
 
     return (
         <li>

@@ -2,11 +2,8 @@ import React, { ReactElement } from 'react'
 import CardItem from '../card-item/card-item'
 import './cards.css'
 
-interface Props {
-    
-}
 
-export default function Cards({}: Props): ReactElement {
+export default function Cards(): ReactElement {
     return (
         <div className='cards'>
             <h1>Check out these EPIC Destinations!</h1>
@@ -16,34 +13,32 @@ export default function Cards({}: Props): ReactElement {
                         <CardItem 
                         src='images/img-9.jpg'
                         text='Waterfalls'
-                        label='Adventure'
-                        path='people/1'
+                        label='mortals'
                         />
                         <CardItem 
                         src='images/img-2.jpg'
                         text='Beaches'
-                        label='Adventure'
-                        path='2'
+                        label='adventure'
+                  
                         />
                     </ul>
                     <ul className="cards__items small">
                         <CardItem 
                         src='images/img-6.jpg'
                         text='Cultures'
-                        label='Adventure'
-                        path='3'
+                        label='culture'
+                   
                         />
                         <CardItem 
                         src='images/img-3.jpg'
                         text='Seas'
-                        label='Adventure'
-                        path='4'
+                        label='adventure'
+                      
                         />
                         <CardItem 
                         src='images/img-4.jpg'
                         text='Islands'
-                        label='Adventure'
-                        path='5'
+                        label='adventure'
                         />
                     </ul>
                 </div>

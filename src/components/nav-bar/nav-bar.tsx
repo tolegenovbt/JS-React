@@ -1,20 +1,21 @@
-import React, { ReactElement, useState, useEffect, Component, useRef } from 'react';
+import React, { ReactElement, useState, useEffect, useRef, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './nav-bar.css';
 import '../app/App.css'
 import { User } from '../../modules/user';
 import gsap from 'gsap'
-import { on } from 'process';
-import { ReactComponent } from '*.svg';
-import { render } from '@testing-library/react';
+import { ContextIsLoggedIn } from '../contexts/context-is-logged-in';
+import { ContextUsername } from '../contexts/context-username';
 
 interface Props{
-  isLoggedIn: boolean;
   initUser: User;
   onLoggedOut: any;
 }
 
-function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
+function Navbar({onLoggedOut}: Props): ReactElement {
+
+  const isLoggedIn = useContext(ContextIsLoggedIn);
+  const username = useContext(ContextUsername);
 
   const headRef = useRef(null);
 
@@ -23,7 +24,6 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
   }, [headRef])
 
     const [click, setClick] = useState(false);
-    const [button, setButton] = useState(true);
   
     const handleClick = () => setClick(!click);
     const handleLogOut = () => { 
@@ -35,20 +35,8 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
     }
       const closeMobileMenu = () => setClick(false);
   
-    const showButton = () => {
-      if (window.innerWidth <= 960) {
-        setButton(false);
-      } else {
-        setButton(true);
-      }
-    };
-  
-    window.addEventListener('resize', showButton);
-
-    useEffect(()=>{
-        showButton()
-    }, [])
-  
+    
+   
     return (
       <>
         <nav className='navbar' >
@@ -84,7 +72,7 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
                   Products
                 </Link>
               </li>
-              {sessionStorage.getItem('isLoggedIn') === 'true' ? (
+              {isLoggedIn === 'true' ? (
                   <li className='nav-item log1' ref={headRef}>
                   <Link
                       to='/'
@@ -93,7 +81,7 @@ function Navbar({isLoggedIn, initUser, onLoggedOut}: Props): ReactElement {
                     >
                           <i className="fas fa-user log1"></i>
                           <br/>
-                          <h5 className="name log1" ref={headRef}>{sessionStorage.getItem('username')}</h5> 
+                          <h5 className="name log1" ref={headRef}>{username}</h5> 
                           <h5 className="name log2" ref={headRef}>Log Out</h5>
                     </Link>
                   </li>

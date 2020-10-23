@@ -1,5 +1,5 @@
-import React, { ReactElement } from 'react';
-import { Link, Redirect, useRouteMatch } from 'react-router-dom'
+import React, { ReactElement} from 'react';
+import { Link } from 'react-router-dom';
 import './categories-detail.css';
 
 
@@ -12,14 +12,13 @@ interface Props {
     category_id: number,
 }
 
-export default function CategoriesDetailItem({src, product_id, text, label, description, category_id}: Props): ReactElement {
+export default function CategoriesDetailItem({src, product_id, text, label, description}: Props): ReactElement {
 
-    const match = useRouteMatch();
 
     return (
         <li className="card">
             <Link to={`products/${product_id}`}>
-                    <img src={`../${src}`} alt="Travel Image"/>
+                    <img src={`../${src}`} alt="Travel"/>
             </Link>
             <div className="content">
                 <span>{label}</span>
