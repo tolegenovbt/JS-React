@@ -17,7 +17,6 @@ export default function CategoriesDetailItem({src, product_id, text, label, desc
     const match = useRouteMatch();
 
     return (
-        <div>
             <li className="card">
                 <Link to={`products/${product_id}`}>
                         <img src={`../${src}`} alt="Travel Image"/>
@@ -29,7 +28,6 @@ export default function CategoriesDetailItem({src, product_id, text, label, desc
                     </h3>
                     <p>{description}</p>
                 </div>
-            </li>   
-        </div>
+            </li>
         );
 }

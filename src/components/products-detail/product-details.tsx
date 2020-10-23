@@ -57,10 +57,8 @@ export default function ProductDetails({}: Props): ReactElement {
         <div>
             <h1  className="categories">Products</h1>
         </div>
-        <div className='product'>
-            <ul className="card">
+        <div>
                 {elements}
-            </ul>
         </div>
         <div>
             <CommentsList onChange={onChange}/> 

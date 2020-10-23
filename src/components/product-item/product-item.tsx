@@ -16,7 +16,6 @@ export default function ProductItem({src, product_id, text, label, description, 
     const match = useRouteMatch();
 
     return (
-        <>
         <li className="card">
             <Link to={`products/${product_id}`}>
                     <img src={`../../${src}`} alt="Travel Image"/>
@@ -28,7 +27,6 @@ export default function ProductItem({src, product_id, text, label, description, 
                     <p>{description}</p>
                 </div>
             </Link>
-        </li>   
-    </>
+        </li>
     )
 }

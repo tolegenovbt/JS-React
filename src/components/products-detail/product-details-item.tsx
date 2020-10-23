@@ -19,7 +19,7 @@ export default function ProductDetailsItem({src, text, label, description}: Prop
     return (
         <>
             <div className="details">
-                <img src={`../${src}`} alt="Travel Image"/>
+                <img src={`../../${src}`} alt="Travel Image"/>
                 <div className="box">
                     <div className="row">
                         <h2>{text}</h2>
