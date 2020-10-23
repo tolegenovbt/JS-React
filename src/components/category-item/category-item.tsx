@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom'
-import './category-item.css'
+// import '../cards/cards.css'
+import './category-item.css';
 
 interface Props {
     src: string, 

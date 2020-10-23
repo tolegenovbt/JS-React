@@ -1,8 +1,7 @@
 import React, { ReactElement } from 'react';
 import { Link, useRouteMatch } from 'react-router-dom'
-// import '../cards/cards.css';
+import '../cards/cards.css'
 import Comments from '../comments/comments-list';
-import './product-details.css';
 
 interface Props {
     src: string,
